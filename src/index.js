@@ -49,17 +49,17 @@ app.get("/equipos", async (req, res) => {
 });
 
 
-// app.get("/jugador", async (req, res) => {
-//   try {
-//     const jugador = await prisma.jugadores.findMany();
-//     res.status(200).json(jugador);
-//   } catch (error) {
-//     res.status(500).json({
-//       message: "Something went wrong :(",
-//       error: error.message,
-//     });
-//   }
-// });
+app.get("/jugadores", async (req, res) => {
+  try {
+    const jugador = await prisma.jugadores.findMany();
+    res.status(200).json(jugador);
+  } catch (error) {
+    res.status(500).json({
+      message: "Something went wrong :(",
+      error: error.message,
+    });
+  }
+});
 
 app.get("/jugador/buscar/:nombre", async (req, res) => {
   const { nombre } = req.params; // Obtiene el nombre del jugador desde los parámetros de ruta
