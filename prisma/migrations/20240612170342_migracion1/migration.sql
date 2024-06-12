@@ -16,7 +16,7 @@ CREATE TABLE "jugadores" (
     "idJugador" SERIAL NOT NULL,
     "nombres" VARCHAR(30) NOT NULL,
     "apellidos" VARCHAR(30) NOT NULL,
-    "fechaNacimiento" TIMESTAMP(3) NOT NULL,
+    "fechaNacimiento" VARCHAR(20) NOT NULL,
     "genero" CHAR(1) NOT NULL,
     "posicion" VARCHAR(30) NOT NULL,
     "idEquipo" INTEGER NOT NULL,
