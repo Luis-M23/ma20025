@@ -61,22 +61,22 @@ app.get("/equipos", async (req, res) => {
 //   }
 // });
 
-app.get("/jugador/buscar:nombre", async (req, res) => {
-  const{nombre}=req.params;
-  try{
-    const jugadores=await prisma.jugadores.findMany({
-      where:{
-        nombres:{
-          contains:nombre,
-          mode:"insensitive",
+app.get("/jugador/buscar/:nombre", async (req, res) => {
+  const { nombre } = req.params; // Obtiene el nombre del jugador desde los parámetros de ruta
+  try {
+    const jugadores = await prisma.jugadores.findMany({
+      where: {
+        nombres: {
+          contains: nombre,
+          mode: "insensitive", // Búsqueda insensible a mayúsculas/minúsculas
         },
       },
     });
     res.status(200).json(jugadores);
-  }catch(error){
+  } catch (error) {
     res.status(500).json({
-      message:"Jugador no encontrado :(",
-      error:error.message,
+      message: "Jugador no encontrado :(",
+      error: error.message,
     });
   }
 });
