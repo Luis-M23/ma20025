@@ -22,7 +22,7 @@ model jugadores {
   idJugador       Int      @id @default(autoincrement())
   nombres         String   @db.VarChar(30)
   apellidos       String   @db.VarChar(30)
-  fechaNacimiento DateTime
+  fechaNacimiento String   @db.VarChar(20)
   genero          String   @db.Char(1)
   posicion        String   @db.VarChar(30)
   idEquipo        Int
