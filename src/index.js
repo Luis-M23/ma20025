@@ -61,8 +61,8 @@ app.get("/equipos", async (req, res) => {
 //   }
 // });
 
-app.get("/jugador/buscar", async (req, res) => {
-  const{nombre}=req.query;
+app.get("/jugador/buscar:nombre", async (req, res) => {
+  const{nombre}=req.params;
   try{
     const jugadores=await prisma.jugadores.findMany({
       where:{
