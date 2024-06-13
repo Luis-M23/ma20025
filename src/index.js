@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.post("/equipo", async (req, res) => {
+app.post("/team", async (req, res) => {
   const {
     nombreEquipo,
     institucion,
@@ -36,7 +36,7 @@ app.post("/equipo", async (req, res) => {
 });
 
 //mostrar todos los registros
-app.get("/equipos", async (req, res) => {
+app.get("/teams", async (req, res) => {
   try {
     const teams = await prisma.equipos.findMany();
     res.status(200).json(teams);
@@ -49,7 +49,7 @@ app.get("/equipos", async (req, res) => {
 });
 
 
-app.get("/jugadores", async (req, res) => {
+app.get("/players", async (req, res) => {
   try {
     const jugador = await prisma.jugadores.findMany();
     res.status(200).json(jugador);
@@ -61,13 +61,13 @@ app.get("/jugadores", async (req, res) => {
   }
 });
 
-app.get("/jugador/buscar/:nombre", async (req, res) => {
-  const { nombre } = req.params; // Obtiene el nombre del jugador desde los parámetros de ruta
+app.get("/player/searh/:name", async (req, res) => {
+  const { name } = req.params; // Obtiene el nombre del jugador desde los parámetros de ruta
   try {
     const jugadores = await prisma.jugadores.findMany({
       where: {
         nombres: {
-          contains: nombre,
+          contains: name,
           mode: "insensitive", // Búsqueda insensible a mayúsculas/minúsculas
         },
       },
@@ -81,7 +81,7 @@ app.get("/jugador/buscar/:nombre", async (req, res) => {
   }
 });
 
-app.post("/jugador", async (req, res) => {
+app.post("/player", async (req, res) => {
   const {
     nombres,
     apellidos,
