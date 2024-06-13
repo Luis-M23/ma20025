@@ -6,6 +6,14 @@ const app = express();
 
 app.use(express.json());
 
+// Sirve archivos estáticos desde el directorio 'src'
+app.use(express.static(path.join(__dirname)));
+
+// Sirve el archivo index.html cuando se accede a la raíz '/'
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
 app.post("/team", async (req, res) => {
   const {
     nombreEquipo,
